@@ -57,6 +57,7 @@ const UserAboutQuiz = ({navigation}) => {
     <View style={{flex: 1, backgroundColor: 'white', alignSelf: 'center'}}>
       <WelcomeHeader headerText={'Welcome Stephen'} />
       <ScrollView
+      showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: 'center',

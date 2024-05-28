@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import images from '../../assets/images';
 import {
   widthPercentageToDP as wp,
@@ -18,12 +18,13 @@ import CustomButton from '../../components/CustomButton';
 import WelcomeHeader from '../../components/WelcomeHeader';
 import JobCard from '../../components/JobCard';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white', alignSelf: 'center'}}>
+    <View style={{ flex: 1, backgroundColor: 'white', alignSelf: 'center' }}>
       <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
       <WelcomeHeader headerText={'Hey Alicia'} />
       <ScrollView
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           flexGrow: 1,
           paddingVertical: 30,

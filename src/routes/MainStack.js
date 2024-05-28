@@ -11,21 +11,23 @@ import Congrats from '../screens/MainScreens/Congrats';
 import OwnerHome from '../screens/PetOwnerScreens/OwnerHome';
 import DogWalking from '../screens/PetOwnerScreens/DogWalking';
 import HouseSitting from '../screens/PetOwnerScreens/HouseSitting';
+import EnterDetails from '../screens/MainScreens/EnterDetails';
 
 const Stack = createNativeStackNavigator();
 const MainStack = () => {
   return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="OwnerHome" component={OwnerHome} />
-            <Stack.Screen name="WelcomeUser" component={WelcomeUser} />
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="UserAboutQuiz" component={UserAboutQuiz} />
-            <Stack.Screen name="PetQuiz" component={PetQuiz} />
-            <Stack.Screen name="AllQuestions" component={AllQuestions} />
-            <Stack.Screen name="Congrats" component={Congrats} />
-            <Stack.Screen name="DogWalking" component={DogWalking} />
-            <Stack.Screen name="HouseSitting" component={HouseSitting} />
-        </Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="OwnerHome" component={OwnerHome} />
+      <Stack.Screen name="EnterDetails" component={EnterDetails} />
+      <Stack.Screen name="WelcomeUser" component={WelcomeUser} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="UserAboutQuiz" component={UserAboutQuiz} />
+      <Stack.Screen name="PetQuiz" component={PetQuiz} />
+      <Stack.Screen name="AllQuestions" component={AllQuestions} />
+      <Stack.Screen name="Congrats" component={Congrats} />
+      <Stack.Screen name="DogWalking" component={DogWalking} />
+      <Stack.Screen name="HouseSitting" component={HouseSitting} />
+    </Stack.Navigator>
   );
 }
 

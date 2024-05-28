@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import theme from '../theme';
 import {
@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-const CustomButton = ({style, textStyle, btnText, onPress}) => {
+const CustomButton = ({ style, textStyle, btnText, onPress, isLoading }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -18,14 +18,20 @@ const CustomButton = ({style, textStyle, btnText, onPress}) => {
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 6,
-          padding: 16,
+          // padding: 16,
+          height:55,
           marginTop: hp('5%')
         },
         style
       ]}>
-      <Text style={[{fontSize: hp('2%'), color: 'white'}, textStyle]}>
-        {btnText}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator size={'large'} color={'white'} />
+      ) : (
+        <Text style={[{ fontSize: hp('2%'), color: 'white' }, textStyle]}>
+          {btnText}
+        </Text>
+      )}
+
     </TouchableOpacity>
   );
 };

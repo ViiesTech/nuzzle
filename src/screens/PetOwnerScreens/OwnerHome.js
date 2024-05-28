@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   StatusBar,
@@ -7,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import images from '../../assets/images';
 import {
   widthPercentageToDP as wp,
@@ -18,13 +19,32 @@ import CustomButton from '../../components/CustomButton';
 import WelcomeHeader from '../../components/WelcomeHeader';
 import JobCard from '../../components/JobCard';
 import ServiceProfiderProfile from '../../components/ServiceProfiderProfile';
+import { useDispatch, useSelector } from 'react-redux';
+import { ClearToken } from '../../redux/Slices';
+import { Logout } from '../../globalFunctions/Auth';
 
-const OwnerHome = ({navigation}) => {
+const OwnerHome = ({ navigation }) => {
+  const token = useSelector(state => state.user.token)
+  const [isLoading, setIsLoading] = useState(false)
+  const dispatch = useDispatch()
+
+  const handleLogout = async () => {
+    try {
+      setIsLoading(true)
+      const resp = await Logout(dispatch, token)
+      console.log('resp', resp)
+      setIsLoading(false)
+    } catch (error) {
+      setIsLoading(false)
+      console.log('errssssssor', error)
+    }
+  }
   return (
-    <View style={{flex: 1, backgroundColor: 'white', alignSelf: 'center'}}>
+    <View style={{ flex: 1, backgroundColor: 'white', alignSelf: 'center' }}>
       <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
       <WelcomeHeader headerText={'Hey Alicia'} />
       <ScrollView
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           flexGrow: 1,
           paddingVertical: 30,
@@ -36,7 +56,7 @@ const OwnerHome = ({navigation}) => {
             width: '90%',
             alignSelf: 'center',
           }}>
-          Which <Text style={{fontWeight: 'bold'}}>Service</Text> Do You Need?
+          Which <Text style={{ fontWeight: 'bold' }}>Service</Text> Do You Need?
         </Text>
 
         <View
@@ -53,18 +73,18 @@ const OwnerHome = ({navigation}) => {
             style={styles.serviceCont}>
             <Image
               source={images.dogWalking}
-              style={{width: 100, objectFit: 'contain'}}
+              style={{ width: 100, objectFit: 'contain' }}
             />
-            <Text style={{color: theme.primaryGreen, fontSize:hp('2%'), marginTop: -20}}>Dog Walking</Text>
+            <Text style={{ color: theme.primaryGreen, fontSize: hp('2%'), marginTop: -20 }}>Dog Walking</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('HouseSitting')}
             style={styles.serviceCont}>
             <Image
               source={images.houseSitting}
-              style={{width: 100, objectFit: 'contain'}}
-              />
-            <Text style={{color: theme.primaryGreen, fontSize:hp('2%'), marginTop: -20}}>House Sitting</Text>
+              style={{ width: 100, objectFit: 'contain' }}
+            />
+            <Text style={{ color: theme.primaryGreen, fontSize: hp('2%'), marginTop: -20 }}>House Sitting</Text>
           </TouchableOpacity>
         </View>
 
@@ -80,17 +100,17 @@ const OwnerHome = ({navigation}) => {
             style={styles.serviceCont}>
             <Image
               source={images.dropInVisits}
-              style={{width: 100, objectFit: 'contain'}}
+              style={{ width: 100, objectFit: 'contain' }}
             />
-            <Text style={{color: theme.primaryGreen, fontSize:hp('2%'), marginTop: -20}}>Drop-In Visits</Text>
+            <Text style={{ color: theme.primaryGreen, fontSize: hp('2%'), marginTop: -20 }}>Drop-In Visits</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.serviceCont}>
             <Image
               source={images.Boarding}
-              style={{width: 100, objectFit: 'contain'}}
-              />
-            <Text style={{color: theme.primaryGreen, fontSize:hp('2%'), marginTop: -20}}>Boarding</Text>
+              style={{ width: 100, objectFit: 'contain' }}
+            />
+            <Text style={{ color: theme.primaryGreen, fontSize: hp('2%'), marginTop: -20 }}>Boarding</Text>
           </TouchableOpacity>
         </View>
 
@@ -102,7 +122,7 @@ const OwnerHome = ({navigation}) => {
             alignSelf: 'center',
             marginTop: 30
           }}>
-          Top <Text style={{fontWeight: 'bold'}}>Rated</Text> Profiles
+          Top <Text style={{ fontWeight: 'bold' }}>Rated</Text> Profiles
         </Text>
         <View
           style={{
@@ -118,7 +138,7 @@ const OwnerHome = ({navigation}) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('WelcomeUser')}
+          onPress={() => navigation.navigate('EnterDetails')}
           style={{
             borderWidth: 1,
             borderRadius: 12,
@@ -132,10 +152,22 @@ const OwnerHome = ({navigation}) => {
             marginTop: 30,
             marginBottom: 20,
           }}>
-          <Image source={images.heartPaw} style={{width: 30, height: 30}} />
-          <Text style={{color: 'white', fontSize: hp('2%'), marginLeft: 10, fontWeight:'bold'}}>
-            Become A Pet Professional
-          </Text>
+          {
+            isLoading ?
+              (
+                <ActivityIndicator size={'large'} color={'white'} />
+              )
+              :
+              (
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Image source={images.heartPaw} style={{ width: 30, height: 30 }} />
+                  <Text style={{ color: 'white', fontSize: hp('2%'), marginLeft: 10, fontWeight: 'bold' }}>
+                    Become A Pet Professional
+                  </Text>
+                </View>
+              )
+          }
+
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -195,7 +227,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 5,
-    justifyContent: 'center', 
+    justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
     paddingBottom: 15

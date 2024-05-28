@@ -144,7 +144,7 @@ const DailyQuiz = ({navigation}) => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <WelcomeHeader headerText={'Welcome Stephen'} />
-      <ScrollView ref={flatListRef} contentContainerStyle={{flexGrow: 1, paddingVertical: 25}}>
+      <ScrollView showsVerticalScrollIndicator={false} ref={flatListRef} contentContainerStyle={{flexGrow: 1, paddingVertical: 25}}>
 
 
         {loading ? (
