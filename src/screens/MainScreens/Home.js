@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
         contentContainerStyle={{
           flexGrow: 1,
           paddingVertical: 30,
-        }}>
+        }}>  
         <Text
           style={{
             color: theme.primaryGreen,

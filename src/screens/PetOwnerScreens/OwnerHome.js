@@ -138,7 +138,10 @@ const OwnerHome = ({ navigation }) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('EnterDetails')}
+          onPress={() =>
+            // handleLogout()
+            navigation.navigate('EnterDetails')
+          }
           style={{
             borderWidth: 1,
             borderRadius: 12,
