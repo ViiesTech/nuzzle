@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 
-const CustomInput = ({style, value, placeholder, onChange,secureTextEntry,keyboardType}) => {
+const CustomInput = ({style, value, placeholder, onChange,secureTextEntry,keyboardType,width}) => {
   return (
     <TextInput
     secureTextEntry={secureTextEntry}
@@ -9,7 +9,7 @@ const CustomInput = ({style, value, placeholder, onChange,secureTextEntry,keyboa
       value={value}
       placeholder={placeholder}
       onChangeText={onChange}
-      style={[{borderWidth: 1, width: '90%', alignSelf: 'center', borderRadius: 6, padding: 10}, style]}
+      style={[{borderWidth: 1, width: width ? width : '90%', alignSelf: 'center', borderRadius: 6, padding: 10}, style]}
     />
   );
 };

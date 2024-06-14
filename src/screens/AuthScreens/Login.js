@@ -1,6 +1,5 @@
 import {
     ScrollView,
-    StyleSheet,
     Text,
     TouchableOpacity,
     View,
@@ -72,17 +71,20 @@ const Login = ({ navigation }) => {
                     shadowRadius: 3.84,
                     elevation: 5,
                 }}>
-                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', width: '88%', alignSelf: 'center', marginBottom: 10, marginTop: 20 }}>Email</Text>
-                <CustomInput keyboardType={'email-address'} placeholder='Type Here' value={email} onChange={(changedText) => handleInputChange('email', changedText)} />
-                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', width: '88%', alignSelf: 'center', marginBottom: 10, marginTop: 20 }}>Password</Text>
+                    <View style={{paddingHorizontal:20}}>
+                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold',   marginBottom: 10, marginTop: 20 }}>Email</Text>
+                <CustomInput width={'100%'} keyboardType={'email-address'} placeholder='Type Here' value={email} onChange={(changedText) => handleInputChange('email', changedText)} />
+                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold',   marginBottom: 10, marginTop: 20 }}>Password</Text>
                 <View style={{}}>
-                    <CustomInput secureTextEntry={passwordVisible} placeholder='Type Here' value={password} onChange={(changedText) => handleInputChange('password', changedText)} />
-                    <View style={{ position: 'absolute', right: 20, height: '100%', justifyContent: 'center', }}>
+                    <CustomInput width={'100%'} secureTextEntry={passwordVisible} placeholder='Type Here' value={password} onChange={(changedText) => handleInputChange('password', changedText)} />
+                    <View style={{ position: 'absolute', right: 10, height: '100%', justifyContent: 'center', }}>
                         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
                             <Entypo name={passwordVisible ? 'eye-with-line' : 'eye'} size={25} />
                         </TouchableOpacity>
                     </View>
                 </View>
+                </View>
+
                 <CustomButton
                     onPress={handleLogin}
                     isLoading={isLoading}

@@ -115,34 +115,35 @@ const Registeration = ({ navigation }) => {
                     )
                     }
                 </TouchableOpacity>
-                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', width: '88%', alignSelf: 'center', marginBottom: 10, marginTop: 20 }}>Name</Text>
-                <CustomInput placeholder='Type Here' value={form.name} onChange={(changedText) => handleInputChange('name', changedText)} />
+                <View style={{paddingHorizontal:20}}>
+                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Name</Text>
+                <CustomInput width={'100%'} placeholder='Type Here' value={form.name} onChange={(changedText) => handleInputChange('name', changedText)} />
 
-                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', width: '88%', alignSelf: 'center', marginBottom: 10, marginTop: 20 }}>Email</Text>
-                <CustomInput keyboardType={'email-address'} placeholder='Type Here' value={form.email} onChange={(changedText) => handleInputChange('email', changedText)} />
+                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Email</Text>
+                <CustomInput width={'100%'} keyboardType={'email-address'} placeholder='Type Here' value={form.email} onChange={(changedText) => handleInputChange('email', changedText)} />
 
-                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', width: '88%', alignSelf: 'center', marginBottom: 10, marginTop: 20 }}>Password</Text>
+                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Password</Text>
                 <View style={{}}>
 
-                    <CustomInput secureTextEntry={passwordVisible} placeholder='Type Here' value={form.password} onChange={(changedText) => handleInputChange('password', changedText)} />
-                    <View style={{ position: 'absolute', right: 20, height: '100%', justifyContent: 'center', }}>
-                        <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
+                    <CustomInput width={'100%'} secureTextEntry={passwordVisible} placeholder='Type Here' value={form.password} onChange={(changedText) => handleInputChange('password', changedText)} />
+                    <View style={{ position: 'absolute', right: 10, height: '100%', justifyContent: 'center',}}>
+                        <TouchableOpacity style={{}} onPress={() => setPasswordVisible(!passwordVisible)}>
                             <Entypo name={passwordVisible ? 'eye-with-line' : 'eye'} size={25} />
                         </TouchableOpacity>
                     </View>
                 </View>
 
-                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', width: '88%', alignSelf: 'center', marginBottom: 10, marginTop: 20 }}>Confirm Password</Text>
+                <Text style={{ color: 'black', fontSize: hp('2%'), fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Confirm Password</Text>
                 <View style={{}}>
 
-                    <CustomInput secureTextEntry={confirmPasswordVisible} placeholder='Type Here' value={form.confirmPassword} onChange={(changedText) => handleInputChange('confirmPassword', changedText)} />
-                    <View style={{ position: 'absolute', right: 20, height: '100%', justifyContent: 'center', }}>
+                    <CustomInput width={'100%'} secureTextEntry={confirmPasswordVisible} placeholder='Type Here' value={form.confirmPassword} onChange={(changedText) => handleInputChange('confirmPassword', changedText)} />
+                    <View style={{ position: 'absolute',right:10, height: '100%', justifyContent: 'center', }}>
                         <TouchableOpacity onPress={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
                             <Entypo name={confirmPasswordVisible ? 'eye-with-line' : 'eye'} size={25} />
                         </TouchableOpacity>
                     </View>
                 </View>
-
+                </View>
                 <CustomButton
                     onPress={handleRegisteration}
                     isLoading={isLoading}
